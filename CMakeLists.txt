@@ -1,14 +1,22 @@
 CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
 
 SET( DEFAULT_BUILD_TYPE Release )
+SET( DEFAULT_CXX_FLAGS_DEBUG " -Wall -std=c++0x -fPIC" )
 SET( DEFAULT_CXX_FLAGS_RELEASE " -Wall -O3 -std=c++0x -fPIC" )
 SET( BUILD_TYPE_DOC "Choose the type of build, options are: None(CMAKE_CXX_FLAGS or CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel." )
+SET( CXX_FLAGS_DEBUG_DOC "Flags used by the compiler during debug builds (/MD /Ob1 /Oi /Ot /Oy /Gs will produce slightly smaller files" )
 SET( CXX_FLAGS_RELEASE_DOC "Flags used by the compiler during release builds (/MD /Ob1 /Oi /Ot /Oy /Gs will produce slightly smaller files" )
 
 IF( DEFINED CMAKE_BUILD_TYPE )
    SET( CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE} CACHE STRING ${BUILD_TYPE_DOC} )
 ELSE()
    SET( CMAKE_BUILD_TYPE ${DEFAULT_BUILD_TYPE} CACHE STRING ${BUILD_TYPE_DOC} )
+ENDIF()
+
+IF( DEFINED CMAKE_CXX_FLAGS_DEBUG )
+   SET( CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG} CACHE STRING ${CXX_FLAGS_DEBUG_DOC} )
+ELSE()
+   SET( CMAKE_CXX_FLAGS_DEBUG ${DEFAULT_CXX_FLAGS_DEBUG} CACHE STRING ${CXX_FLAGS_DEBUG_DOC} )
 ENDIF()
 
 IF( DEFINED CMAKE_CXX_FLAGS_RELEASE )
