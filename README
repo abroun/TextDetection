@@ -1,0 +1,13 @@
+TextDetection routines...
+
+Build Instructions
+===================
+
+mkdir build
+cd build
+ccmake ../
+
+make
+make install
+
+
